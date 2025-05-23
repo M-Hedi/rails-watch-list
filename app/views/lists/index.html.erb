@@ -2,15 +2,25 @@
 <h2>Lists#index</h2>
 <p>Find me in app/views/lists/index.html.erb</p>
 
-
-
- <ul>
+<div class="container">
   <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
+
+  <% if list.photo.attached? %>
+    <div class="card-list" style="
+                background-image: url('<%= cl_image_path(list.photo.key, height: 300, width: 400, crop: :fill) %>');">
+  <%= link_to list.name, list_path(list), class: "list-linkto" %>
+
+    </div>
+  <% else %>
+    <div class="card-list" style="
+                background-image: url('https://cdn.pixabay.com/photo/2013/07/13/11/26/film-158157_1280.png');
+                ">
+      <%= link_to list.name, list_path(list), class: "list-linkto" %>
+    </div>
   <% end %>
-</ul>
 
-
+  <% end %>
 
 
 <%= link_to "Add a new type", new_list_path, class:"btn btn-info" %>
+</div>
