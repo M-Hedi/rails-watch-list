@@ -7,7 +7,7 @@
 
   <% if list.photo.attached? %>
     <div class="card-list" style="
-                background-image: url('<%= cl_image_path(list.photo.key, height: 300, width: 400, crop: :fill) %>');">
+                background-image: url(<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>)">
   <%= link_to list.name, list_path(list), class: "list-linkto" %>
 
     </div>
