@@ -1,0 +1,28 @@
+<h1>Lists#show</h1>
+<p>Find me in app/views/lists/show.html.erb</p>
+
+
+<h2><%= @list.name %></h2>
+<br>
+
+<ul class="list-unstyled">
+  <% @list.bookmarks.each do |bookmark| %>
+    <li><%= bookmark.movie.title %> : <%= bookmark.comment %> /
+      <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <i class="fa-solid fa-trash text-danger"></i>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+
+<%= link_to "home_page", root_path %>
+<%= link_to "Add_Bookmark", new_list_bookmark_path(@list) %>
+
+
+<%# <%= link_to "Delete",
+  bookmarks_path(@list),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
